@@ -2,11 +2,8 @@
 <html lang="ms">
 <head>
   <meta charset="utf-8">
-  <meta
-    name="viewport"
-    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
-  >
-
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#6d5bd0">
   <title>Jejak & Belajar | Trace & Learn</title>
 
   <style>
@@ -64,7 +61,6 @@
       border:2px solid #fff;
       border-radius:28px;
       box-shadow:var(--shadow);
-      backdrop-filter:blur(5px);
     }
 
     .home {
@@ -274,6 +270,7 @@
     }
 
     .word {
+      font-family:Georgia,"Times New Roman",serif;
       font-size:clamp(38px,6vw,70px);
       font-weight:900;
       letter-spacing:5px;
@@ -356,13 +353,13 @@
       inset:0;
       display:grid;
       place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
       font-size:clamp(58px,8vw,105px);
       font-weight:900;
       letter-spacing:5px;
       color:#ebe8f2;
       -webkit-text-stroke:2px #aaa2bd;
       paint-order:stroke fill;
-      opacity:1;
       pointer-events:none;
     }
 
@@ -573,7 +570,6 @@
 
 <main class="app">
 
-  <!-- MUKA DEPAN -->
   <section id="home" class="screen home">
     <div class="hero card">
       <div class="logo">✏️🌈</div>
@@ -610,7 +606,6 @@
     </div>
   </section>
 
-  <!-- PILIH SUBJEK -->
   <section id="subjects" class="screen hidden">
     <header>
       <button class="icon-btn homeBtn">⌂</button>
@@ -623,17 +618,16 @@
     <div class="subject-grid">
       <button class="subject" data-subject="language">
         <span>🔤</span>
-        <label id="languageLabel">Bahasa Melayu</label>
+        <span id="languageLabel">Bahasa Melayu</span>
       </button>
 
       <button class="subject" data-subject="math">
         <span>🔢</span>
-        <label id="mathLabel">Matematik</label>
+        <span id="mathLabel">Matematik</span>
       </button>
     </div>
   </section>
 
-  <!-- ARAHAN -->
   <section id="instructions" class="screen hidden">
     <header>
       <button class="icon-btn" id="backSubject">←</button>
@@ -655,17 +649,16 @@
 
         <div class="step">
           <b>⭐</b>
-          <span id="step3">
-            Tulis sendiri di kotak kanan.
-          </span>
+          <span id="step3">Tulis sendiri di kotak kanan.</span>
         </div>
       </div>
 
-      <button class="primary" id="playBtn">MULA</button>
+      <button class="primary" id="playBtn">
+        MULA
+      </button>
     </div>
   </section>
 
-  <!-- PERMAINAN -->
   <section id="game" class="screen hidden">
     <header>
       <button class="icon-btn" id="quitBtn">⌂</button>
@@ -685,7 +678,6 @@
     </header>
 
     <div class="game-card card">
-
       <div class="prompt">
         <div id="picture" class="picture">📖</div>
 
@@ -695,15 +687,11 @@
           <h2 id="word" class="word">BUKU</h2>
 
           <p id="promptText" class="prompt-text">
-            Tekan audio untuk dengar.
+            Tekan audio untuk mendengar.
           </p>
         </div>
 
-        <button
-          id="speakBtn"
-          class="speak"
-          aria-label="Dengar perkataan"
-        >
+        <button id="speakBtn" class="speak" aria-label="Dengar">
           🔊
         </button>
       </div>
@@ -712,7 +700,6 @@
 
       <div class="boards">
 
-        <!-- KOTAK JEJAK -->
         <div class="board">
           <div id="traceTitle" class="board-title">
             1. JEJAK
@@ -726,7 +713,6 @@
           <div class="palette" data-for="trace"></div>
         </div>
 
-        <!-- KOTAK TULIS SENDIRI -->
         <div class="board">
           <div id="writeTitle" class="board-title">
             2. TULIS SENDIRI
@@ -759,7 +745,7 @@
         </button>
 
         <button class="tool done" id="doneBtn">
-          ✓ <span id="doneLabel">SIAP</span>
+          ✓ <span id="doneLabel">SEMAK</span>
         </button>
       </div>
 
@@ -767,7 +753,6 @@
     </div>
   </section>
 
-  <!-- SKRIN TAMAT -->
   <section id="finish" class="screen finish hidden">
     <div class="finish-card card">
       <div class="stars">⭐🌟⭐</div>
@@ -794,7 +779,6 @@
 
 </main>
 
-<!-- INFO GURU -->
 <div id="infoModal" class="modal hidden">
   <div class="modal-box card">
 
@@ -832,72 +816,27 @@
 <script>
 const DATA = {
   ms: [
-    {
-      word:"BUKU",
-      emoji:"📖"
-    },
-    {
-      word:"BOLA",
-      emoji:"⚽"
-    },
-    {
-      word:"BAJU",
-      emoji:"👕"
-    },
-    {
-      word:"MEJA",
-      emoji:"🪑"
-    },
-    {
-      word:"SUSU",
-      emoji:"🥛"
-    }
+    {word:"BUKU", emoji:"📖"},
+    {word:"BOLA", emoji:"⚽"},
+    {word:"BAJU", emoji:"👕"},
+    {word:"MEJA", emoji:"🪑"},
+    {word:"SUSU", emoji:"🥛"}
   ],
 
   en: [
-    {
-      word:"BOOK",
-      emoji:"📖"
-    },
-    {
-      word:"BALL",
-      emoji:"⚽"
-    },
-    {
-      word:"CAT",
-      emoji:"🐱"
-    },
-    {
-      word:"FISH",
-      emoji:"🐟"
-    },
-    {
-      word:"MILK",
-      emoji:"🥛"
-    }
+    {word:"BOOK", emoji:"📖"},
+    {word:"BALL", emoji:"⚽"},
+    {word:"CAT", emoji:"🐱"},
+    {word:"FISH", emoji:"🐟"},
+    {word:"MILK", emoji:"🥛"}
   ],
 
   math: [
-    {
-      word:"1",
-      items:"🍎"
-    },
-    {
-      word:"2",
-      items:"⭐⭐"
-    },
-    {
-      word:"3",
-      items:"🐟🐟🐟"
-    },
-    {
-      word:"4",
-      items:"🌸🌸🌸🌸"
-    },
-    {
-      word:"5",
-      items:"⚽⚽⚽⚽⚽"
-    }
+    {word:"1", items:"🍎"},
+    {word:"2", items:"⭐⭐"},
+    {word:"3", items:"🐟🐟🐟"},
+    {word:"4", items:"🌸🌸🌸🌸"},
+    {word:"5", items:"⚽⚽⚽⚽⚽"}
   ]
 };
 
@@ -916,16 +855,16 @@ const TEXT = {
     write:"2. TULIS SENDIRI",
     undo:"Undo",
     clear:"Padam",
-    done:"SIAP",
-    next:"SETERUSNYA",
-    audio:"Tekan audio untuk dengar perkataan.",
-    mathAudio:"Tekan audio untuk dengar nombor.",
-    mathQuestion:"Kira objek, jejak nombor dan tulis sendiri.",
+    check:"SEMAK",
     need:"Cuba menulis dalam kedua-dua kotak dahulu.",
-    good:"Bagus! Kamu telah mencuba sendiri! ⭐",
+    wrong:"Tulisan belum cukup tepat. Lihat bentuk contoh dan cuba semula.",
+    correct:"Betul! Tulisan kamu sangat baik! ⭐",
+    next:"SETERUSNYA",
     finish:"Tahniah!",
     finishText:"Kamu telah mencuba semua aktiviti. Hebat!",
-    again:"MAIN LAGI"
+    again:"MAIN LAGI",
+    languageInstruction:"Tekan audio untuk mendengar perkataan.",
+    mathInstruction:"Kira objek. Jejak dan tulis nombor jawapan."
   },
 
   en: {
@@ -933,8 +872,8 @@ const TEXT = {
     language:"English",
     math:"Mathematics",
     how:"How to Play",
-    step1:"Look at the picture and listen to the word.",
-    step2:"Choose a colour and trace the word.",
+    step1:"Look at the picture and listen.",
+    step2:"Choose a colour and trace.",
     step3:"Write by yourself in the right box.",
     start:"START",
     progress:"Activity",
@@ -942,29 +881,27 @@ const TEXT = {
     write:"2. WRITE BY YOURSELF",
     undo:"Undo",
     clear:"Clear",
-    done:"DONE",
-    next:"NEXT",
-    audio:"Press the audio button to hear the word.",
-    mathAudio:"Press the audio button to hear the number.",
-    mathQuestion:"Count the objects, trace and write the number.",
+    check:"CHECK",
     need:"Try writing in both boxes first.",
-    good:"Great! You tried it by yourself! ⭐",
+    wrong:"The writing is not close enough. Look at the example and try again.",
+    correct:"Correct! Your writing is excellent! ⭐",
+    next:"NEXT",
     finish:"Well done!",
     finishText:"You completed all the activities. Amazing!",
-    again:"PLAY AGAIN"
+    again:"PLAY AGAIN",
+    languageInstruction:"Press the audio button to hear the word.",
+    mathInstruction:"Count the objects. Trace and write the answer."
   }
 };
 
-let lang = "ms";
+let language = "ms";
 let subject = "language";
 let activityIndex = 0;
 let score = 0;
 let readyForNext = false;
 
 const $ = selector => document.querySelector(selector);
-
-const $$ = selector =>
-  [...document.querySelectorAll(selector)];
+const $$ = selector => [...document.querySelectorAll(selector)];
 
 function showScreen(id) {
   $$(".screen").forEach(screen => {
@@ -984,7 +921,7 @@ $$(".choice").forEach(button => {
     });
 
     button.classList.add("selected");
-    lang = button.dataset.lang;
+    language = button.dataset.lang;
     $("#startBtn").disabled = false;
   });
 });
@@ -995,28 +932,28 @@ $("#startBtn").addEventListener("click", () => {
 });
 
 function applyLanguage() {
-  const t = TEXT[lang];
+  const text = TEXT[language];
 
-  $("#chooseTitle").textContent = t.choose;
-  $("#languageLabel").textContent = t.language;
-  $("#mathLabel").textContent = t.math;
-  $("#instructionTitle").textContent = t.how;
-  $("#step1").textContent = t.step1;
-  $("#step2").textContent = t.step2;
-  $("#step3").textContent = t.step3;
-  $("#playBtn").textContent = t.start;
-  $("#traceTitle").textContent = t.trace;
-  $("#writeTitle").textContent = t.write;
-  $("#undoLabel").textContent = t.undo;
-  $("#undoLabel2").textContent = t.undo;
-  $("#clearLabel1").textContent = t.clear;
-  $("#clearLabel2").textContent = t.clear;
-  $("#doneLabel").textContent = t.done;
-  $("#finishTitle").textContent = t.finish;
-  $("#finishText").textContent = t.finishText;
-  $("#againBtn").textContent = t.again;
+  $("#chooseTitle").textContent = text.choose;
+  $("#languageLabel").textContent = text.language;
+  $("#mathLabel").textContent = text.math;
+  $("#instructionTitle").textContent = text.how;
+  $("#step1").textContent = text.step1;
+  $("#step2").textContent = text.step2;
+  $("#step3").textContent = text.step3;
+  $("#playBtn").textContent = text.start;
+  $("#traceTitle").textContent = text.trace;
+  $("#writeTitle").textContent = text.write;
+  $("#undoLabel").textContent = text.undo;
+  $("#undoLabel2").textContent = text.undo;
+  $("#clearLabel1").textContent = text.clear;
+  $("#clearLabel2").textContent = text.clear;
+  $("#doneLabel").textContent = text.check;
+  $("#finishTitle").textContent = text.finish;
+  $("#finishText").textContent = text.finishText;
+  $("#againBtn").textContent = text.again;
 
-  document.documentElement.lang = lang;
+  document.documentElement.lang = language;
 }
 
 /* PILIH SUBJEK */
@@ -1042,7 +979,7 @@ $("#quitBtn").addEventListener("click", () => {
   showScreen("home");
 });
 
-/* MULA PERMAINAN */
+/* MULA GAME */
 
 $("#playBtn").addEventListener("click", () => {
   activityIndex = 0;
@@ -1060,7 +997,7 @@ $("#againBtn").addEventListener("click", () => {
   showScreen("game");
 });
 
-/* WARNA */
+/* WARNA PEN */
 
 const colours = [
   "#29304a",
@@ -1070,7 +1007,7 @@ const colours = [
   "#19a878"
 ];
 
-function createPalette(container, drawingBoard) {
+function createPalette(container, board) {
   colours.forEach((colour, index) => {
     const button = document.createElement("button");
 
@@ -1090,32 +1027,31 @@ function createPalette(container, drawingBoard) {
       });
 
       button.classList.add("active");
-      drawingBoard.colour = colour;
+      board.colour = colour;
     });
 
     container.appendChild(button);
   });
 }
 
-/* KOTAK MENULIS */
+/* DRAWING CANVAS */
 
 function createDrawingBoard(canvas) {
   let context;
   let drawing = false;
   let lastPosition = null;
   let history = [];
-  let containsWriting = false;
+  let hasWriting = false;
   let selectedColour = colours[0];
 
   function resizeCanvas() {
-    const rectangle = canvas.getBoundingClientRect();
+    const rect = canvas.getBoundingClientRect();
     const ratio = window.devicePixelRatio || 1;
+    const previousImage =
+      canvas.width ? canvas.toDataURL() : null;
 
-    const oldImage =
-      canvas.width > 0 ? canvas.toDataURL() : null;
-
-    canvas.width = rectangle.width * ratio;
-    canvas.height = rectangle.height * ratio;
+    canvas.width = rect.width * ratio;
+    canvas.height = rect.height * ratio;
 
     context = canvas.getContext("2d");
     context.scale(ratio, ratio);
@@ -1123,7 +1059,7 @@ function createDrawingBoard(canvas) {
     context.lineJoin = "round";
     context.lineWidth = 9;
 
-    if (oldImage) {
+    if (previousImage) {
       const image = new Image();
 
       image.onload = () => {
@@ -1131,21 +1067,21 @@ function createDrawingBoard(canvas) {
           image,
           0,
           0,
-          rectangle.width,
-          rectangle.height
+          rect.width,
+          rect.height
         );
       };
 
-      image.src = oldImage;
+      image.src = previousImage;
     }
   }
 
   function getPosition(event) {
-    const rectangle = canvas.getBoundingClientRect();
+    const rect = canvas.getBoundingClientRect();
 
     return {
-      x:event.clientX - rectangle.left,
-      y:event.clientY - rectangle.top
+      x:event.clientX - rect.left,
+      y:event.clientY - rect.top
     };
   }
 
@@ -1153,10 +1089,9 @@ function createDrawingBoard(canvas) {
     event.preventDefault();
 
     history.push(canvas.toDataURL());
-
     drawing = true;
     lastPosition = getPosition(event);
-    containsWriting = true;
+    hasWriting = true;
 
     context.beginPath();
 
@@ -1180,17 +1115,8 @@ function createDrawingBoard(canvas) {
     const currentPosition = getPosition(event);
 
     context.beginPath();
-
-    context.moveTo(
-      lastPosition.x,
-      lastPosition.y
-    );
-
-    context.lineTo(
-      currentPosition.x,
-      currentPosition.y
-    );
-
+    context.moveTo(lastPosition.x, lastPosition.y);
+    context.lineTo(currentPosition.x, currentPosition.y);
     context.strokeStyle = selectedColour;
     context.lineWidth = 9;
     context.stroke();
@@ -1202,25 +1128,10 @@ function createDrawingBoard(canvas) {
     drawing = false;
   }
 
-  canvas.addEventListener(
-    "pointerdown",
-    startDrawing
-  );
-
-  canvas.addEventListener(
-    "pointermove",
-    continueDrawing
-  );
-
-  window.addEventListener(
-    "pointerup",
-    stopDrawing
-  );
-
-  window.addEventListener(
-    "pointercancel",
-    stopDrawing
-  );
+  canvas.addEventListener("pointerdown", startDrawing);
+  canvas.addEventListener("pointermove", continueDrawing);
+  window.addEventListener("pointerup", stopDrawing);
+  window.addEventListener("pointercancel", stopDrawing);
 
   resizeCanvas();
 
@@ -1234,7 +1145,7 @@ function createDrawingBoard(canvas) {
     },
 
     get hasWriting() {
-      return containsWriting;
+      return hasWriting;
     },
 
     clear() {
@@ -1247,7 +1158,7 @@ function createDrawingBoard(canvas) {
         canvas.height
       );
 
-      containsWriting = false;
+      hasWriting = false;
     },
 
     undo() {
@@ -1275,7 +1186,7 @@ function createDrawingBoard(canvas) {
       };
 
       image.src = previousImage;
-      containsWriting = true;
+      hasWriting = true;
     },
 
     reset() {
@@ -1287,7 +1198,7 @@ function createDrawingBoard(canvas) {
       );
 
       history = [];
-      containsWriting = false;
+      hasWriting = false;
     },
 
     resize:resizeCanvas
@@ -1331,6 +1242,291 @@ $("#clearWrite").addEventListener("click", () => {
   writeBoard.clear();
 });
 
+/* SEMAK BENTUK TULISAN */
+
+function writingMatches(canvas, expectedText, isTracing) {
+  const context = canvas.getContext("2d");
+
+  const source = context.getImageData(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  const sourceWidth = source.width;
+  const sourceHeight = source.height;
+
+  let minimumX = sourceWidth;
+  let minimumY = sourceHeight;
+  let maximumX = -1;
+  let maximumY = -1;
+  let inkAmount = 0;
+
+  for (let y = 0; y < sourceHeight; y += 2) {
+    for (let x = 0; x < sourceWidth; x += 2) {
+      const alpha =
+        source.data[(y * sourceWidth + x) * 4 + 3];
+
+      if (alpha > 25) {
+        inkAmount++;
+
+        minimumX = Math.min(minimumX, x);
+        maximumX = Math.max(maximumX, x);
+        minimumY = Math.min(minimumY, y);
+        maximumY = Math.max(maximumY, y);
+      }
+    }
+  }
+
+  if (
+    inkAmount < 35 ||
+    maximumX - minimumX < 18 ||
+    maximumY - minimumY < 28
+  ) {
+    return false;
+  }
+
+  const comparisonWidth = 240;
+  const comparisonHeight = 140;
+
+  const userCanvas = document.createElement("canvas");
+  const targetCanvas = document.createElement("canvas");
+
+  userCanvas.width = comparisonWidth;
+  userCanvas.height = comparisonHeight;
+
+  targetCanvas.width = comparisonWidth;
+  targetCanvas.height = comparisonHeight;
+
+  const userContext =
+    userCanvas.getContext("2d");
+
+  const targetContext =
+    targetCanvas.getContext("2d");
+
+  userContext.drawImage(
+    canvas,
+    minimumX,
+    minimumY,
+    maximumX - minimumX + 1,
+    maximumY - minimumY + 1,
+    15,
+    12,
+    comparisonWidth - 30,
+    comparisonHeight - 24
+  );
+
+  let fontSize;
+
+  if (expectedText.length <= 1) {
+    fontSize = 112;
+  } else {
+    fontSize = Math.min(
+      104,
+      Math.floor(390 / expectedText.length)
+    );
+  }
+
+  targetContext.font =
+    `900 ${fontSize}px Georgia`;
+
+  targetContext.textAlign = "center";
+  targetContext.textBaseline = "middle";
+  targetContext.lineWidth = 5;
+  targetContext.strokeStyle = "#000000";
+
+  targetContext.strokeText(
+    expectedText,
+    comparisonWidth / 2,
+    comparisonHeight / 2 + 3
+  );
+
+  const userPixels = userContext.getImageData(
+    0,
+    0,
+    comparisonWidth,
+    comparisonHeight
+  ).data;
+
+  const targetPixels = targetContext.getImageData(
+    0,
+    0,
+    comparisonWidth,
+    comparisonHeight
+  ).data;
+
+  const userMask =
+    new Uint8Array(comparisonWidth * comparisonHeight);
+
+  const targetMask =
+    new Uint8Array(comparisonWidth * comparisonHeight);
+
+  for (
+    let index = 0;
+    index < comparisonWidth * comparisonHeight;
+    index++
+  ) {
+    userMask[index] =
+      userPixels[index * 4 + 3] > 35;
+
+    targetMask[index] =
+      targetPixels[index * 4 + 3] > 35;
+  }
+
+  function hasNearbyPixel(mask, x, y, radius) {
+    const startingY = Math.max(0, y - radius);
+    const endingY = Math.min(
+      comparisonHeight - 1,
+      y + radius
+    );
+
+    const startingX = Math.max(0, x - radius);
+    const endingX = Math.min(
+      comparisonWidth - 1,
+      x + radius
+    );
+
+    for (
+      let nearbyY = startingY;
+      nearbyY <= endingY;
+      nearbyY++
+    ) {
+      for (
+        let nearbyX = startingX;
+        nearbyX <= endingX;
+        nearbyX++
+      ) {
+        if (
+          mask[
+            nearbyY * comparisonWidth + nearbyX
+          ]
+        ) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  let userPixelCount = 0;
+  let userPixelsNearTarget = 0;
+  let targetPixelCount = 0;
+  let targetPixelsNearUser = 0;
+
+  const toleranceRadius =
+    isTracing ? 13 : 17;
+
+  for (
+    let y = 0;
+    y < comparisonHeight;
+    y += 2
+  ) {
+    for (
+      let x = 0;
+      x < comparisonWidth;
+      x += 2
+    ) {
+      const position =
+        y * comparisonWidth + x;
+
+      if (userMask[position]) {
+        userPixelCount++;
+
+        if (
+          hasNearbyPixel(
+            targetMask,
+            x,
+            y,
+            toleranceRadius
+          )
+        ) {
+          userPixelsNearTarget++;
+        }
+      }
+
+      if (targetMask[position]) {
+        targetPixelCount++;
+
+        if (
+          hasNearbyPixel(
+            userMask,
+            x,
+            y,
+            toleranceRadius
+          )
+        ) {
+          targetPixelsNearUser++;
+        }
+      }
+    }
+  }
+
+  const precision =
+    userPixelsNearTarget /
+    Math.max(1, userPixelCount);
+
+  const coverage =
+    targetPixelsNearUser /
+    Math.max(1, targetPixelCount);
+
+  const sections =
+    Math.min(expectedText.length, 5);
+
+  let filledSections = 0;
+
+  for (
+    let section = 0;
+    section < sections;
+    section++
+  ) {
+    const startX = Math.floor(
+      section * comparisonWidth / sections
+    );
+
+    const endX = Math.floor(
+      (section + 1) * comparisonWidth / sections
+    );
+
+    let sectionInk = 0;
+
+    for (
+      let y = 8;
+      y < comparisonHeight - 8;
+      y += 3
+    ) {
+      for (
+        let x = startX;
+        x < endX;
+        x += 3
+      ) {
+        if (
+          userMask[y * comparisonWidth + x]
+        ) {
+          sectionInk++;
+        }
+      }
+    }
+
+    if (sectionInk > 4) {
+      filledSections++;
+    }
+  }
+
+  const precisionNeeded =
+    isTracing ? 0.43 : 0.34;
+
+  const coverageNeeded =
+    isTracing ? 0.32 : 0.20;
+
+  return (
+    precision > precisionNeeded &&
+    coverage > coverageNeeded &&
+    filledSections === sections
+  );
+}
+
 /* AKTIVITI SEMASA */
 
 function getCurrentActivity() {
@@ -1338,7 +1534,7 @@ function getCurrentActivity() {
     return DATA.math[activityIndex];
   }
 
-  return DATA[lang][activityIndex];
+  return DATA[language][activityIndex];
 }
 
 function loadActivity() {
@@ -1348,11 +1544,11 @@ function loadActivity() {
   writeBoard.reset();
 
   const data = getCurrentActivity();
-  const t = TEXT[lang];
+  const text = TEXT[language];
   const totalActivities = 5;
 
   $("#progressText").textContent =
-    `${t.progress} ${activityIndex + 1} / ${totalActivities}`;
+    `${text.progress} ${activityIndex + 1} / ${totalActivities}`;
 
   $("#scoreText").textContent =
     "⭐ " + score;
@@ -1362,12 +1558,12 @@ function loadActivity() {
 
   $("#word").textContent = data.word;
 
-  // Tulisan panduan kekal kelihatan di kotak kiri
+  // Huruf panduan termasuk I dan J menggunakan Georgia
   $("#guide").textContent = data.word;
 
   $("#feedback").textContent = "";
   $("#feedback").className = "feedback";
-  $("#doneLabel").textContent = t.done;
+  $("#doneLabel").textContent = text.check;
 
   const isMathematics =
     subject === "math";
@@ -1385,27 +1581,33 @@ function loadActivity() {
   if (isMathematics) {
     $("#quantity").textContent = data.items;
     $("#picture").classList.add("hidden");
-    $("#promptText").textContent = t.mathAudio;
-    $("#mathQuestion").textContent = t.mathQuestion;
+
+    $("#promptText").textContent =
+      language === "ms"
+        ? "Tekan audio untuk dengar nombor."
+        : "Press audio to hear the number.";
+
+    $("#mathQuestion").textContent =
+      text.mathInstruction;
   } else {
     $("#picture").classList.remove("hidden");
     $("#picture").textContent = data.emoji;
     $("#quantity").textContent = "";
-    $("#promptText").textContent = t.audio;
+    $("#promptText").textContent =
+      text.languageInstruction;
   }
 }
 
-/* BUTTON SIAP */
+/* BUTTON SEMAK DAN SETERUSNYA */
 
 $("#doneBtn").addEventListener("click", () => {
-  const t = TEXT[lang];
+  const text = TEXT[language];
 
   if (readyForNext) {
     activityIndex++;
 
     if (activityIndex >= 5) {
       $("#progressBar").style.width = "100%";
-
       celebrate();
       showScreen("finish");
     } else {
@@ -1419,10 +1621,42 @@ $("#doneBtn").addEventListener("click", () => {
     !traceBoard.hasWriting ||
     !writeBoard.hasWriting
   ) {
-    $("#feedback").textContent = t.need;
+    $("#feedback").textContent = text.need;
+    $("#feedback").className = "feedback warn";
+    speak(text.need);
+    return;
+  }
+
+  const expectedText =
+    getCurrentActivity().word;
+
+  const tracingIsCorrect =
+    writingMatches(
+      $("#traceCanvas"),
+      expectedText,
+      true
+    );
+
+  const independentWritingIsCorrect =
+    writingMatches(
+      $("#writeCanvas"),
+      expectedText,
+      false
+    );
+
+  if (
+    !tracingIsCorrect ||
+    !independentWritingIsCorrect
+  ) {
+    $("#feedback").textContent = text.wrong;
     $("#feedback").className = "feedback warn";
 
-    speak(t.need);
+    speak(
+      language === "ms"
+        ? "Cuba lagi"
+        : "Try again"
+    );
+
     return;
   }
 
@@ -1432,11 +1666,20 @@ $("#doneBtn").addEventListener("click", () => {
   $("#scoreText").textContent =
     "⭐ " + score;
 
-  $("#feedback").textContent = t.good;
-  $("#feedback").className = "feedback good";
-  $("#doneLabel").textContent = t.next;
+  $("#feedback").textContent =
+    text.correct;
 
-  speak(lang === "ms" ? "Bagus" : "Great");
+  $("#feedback").className =
+    "feedback good";
+
+  $("#doneLabel").textContent =
+    text.next;
+
+  speak(
+    language === "ms"
+      ? "Betul"
+      : "Correct"
+  );
 });
 
 /* SUARA PEREMPUAN */
@@ -1459,39 +1702,42 @@ if ("speechSynthesis" in window) {
 }
 
 function selectFemaleVoice(languageCode) {
-  const language =
-    languageCode.toLowerCase().split("-")[0];
+  const wantedLanguage =
+    languageCode
+      .toLowerCase()
+      .split("-")[0];
 
-  const languageVoices =
+  const matchingVoices =
     availableVoices.filter(voice =>
       voice.lang
         .toLowerCase()
-        .startsWith(language)
+        .startsWith(wantedLanguage)
     );
 
   const femaleVoiceNames =
     /female|samantha|zira|susan|karen|moira|tessa|victoria|ava|serena|siri|hazel|aria|jenny|natasha|nurul|yasmin/i;
 
-  const femaleVoice =
-    languageVoices.find(voice =>
+  return (
+    matchingVoices.find(voice =>
       femaleVoiceNames.test(voice.name)
-    );
-
-  return femaleVoice ||
-    languageVoices[0] ||
-    null;
+    ) ||
+    matchingVoices[0] ||
+    null
+  );
 }
 
-function speak(text) {
+function speak(spokenText) {
   if (!("speechSynthesis" in window)) return;
 
   window.speechSynthesis.cancel();
 
   const speech =
-    new SpeechSynthesisUtterance(text);
+    new SpeechSynthesisUtterance(spokenText);
 
   speech.lang =
-    lang === "ms" ? "ms-MY" : "en-GB";
+    language === "ms"
+      ? "ms-MY"
+      : "en-GB";
 
   speech.rate = 0.72;
   speech.pitch = 1.12;
@@ -1512,27 +1758,27 @@ function speak(text) {
 $("#speakBtn").addEventListener("click", () => {
   const data = getCurrentActivity();
 
-  // Contoh: hanya sebut BOOK, BUKU atau 1
+  // Hanya sebut BOOK, BUKU atau nombor
   speak(data.word);
 });
 
-/* CONFETTI */
+/* SKRIN TAHNIAH */
 
 function celebrate() {
-  for (let i = 0; i < 35; i++) {
+  for (let index = 0; index < 35; index++) {
     const confetti =
       document.createElement("span");
 
     confetti.className = "confetti";
 
     confetti.textContent =
-      ["⭐","🎉","●","◆"][i % 4];
+      ["⭐","🎉","●","◆"][index % 4];
 
     confetti.style.left =
       Math.random() * 100 + "vw";
 
     confetti.style.color =
-      colours[i % colours.length];
+      colours[index % colours.length];
 
     confetti.style.animationDelay =
       Math.random() * 1.2 + "s";
@@ -1545,62 +1791,51 @@ function celebrate() {
   }
 
   speak(
-    lang === "ms" ?
-      "Tahniah" :
-      "Well done"
+    language === "ms"
+      ? "Tahniah"
+      : "Well done"
   );
 }
 
 /* INFO GURU */
 
-const INFO = {
+const INFORMATION = {
   profile: `
     <h3>Profil Individu Hipotetikal: Aiman, 8 Tahun</h3>
 
     <p>
-      <b>Kategori:</b> MBPK Masalah Pembelajaran dengan
-      fokus kesukaran kemahiran tulisan tangan atau ciri
-      disgrafia.
+      <b>Kategori:</b> MBPK Masalah Pembelajaran
+      dengan fokus kesukaran kemahiran tulisan
+      tangan atau ciri disgrafia.
     </p>
 
     <ul>
       <li>
-        <b>Kekuatan:</b> Mengenal huruf, gambar objek
-        harian dan nombor asas serta boleh mengikuti
-        arahan satu langkah.
+        <b>Kekuatan:</b> Mengenal huruf, gambar
+        objek harian dan nombor asas.
       </li>
 
       <li>
-        <b>Minat:</b> Bahan visual, warna dan aktiviti
-        menggunakan tablet.
+        <b>Minat:</b> Bahan visual, warna dan
+        aktiviti menggunakan tablet.
       </li>
 
       <li>
-        <b>Kesukaran:</b> Pembentukan, saiz dan jarak
-        huruf kurang konsisten. Tulisan juga perlahan
-        dan memerlukan model visual.
+        <b>Kesukaran:</b> Pembentukan, saiz dan
+        jarak huruf kurang konsisten.
       </li>
 
       <li>
-        <b>Halangan penyertaan:</b> Latihan tulisan
-        yang panjang boleh meningkatkan beban dan
-        mengurangkan penglibatan.
+        <b>Halangan:</b> Latihan tulisan panjang
+        boleh mengurangkan penglibatan.
       </li>
 
       <li>
-        <b>Keperluan sokongan:</b> Arahan ringkas,
-        latihan berperingkat, pengulangan, ruang
-        tulisan yang jelas, pengurangan bantuan dan
-        maklum balas positif.
+        <b>Keperluan:</b> Arahan ringkas, latihan
+        berperingkat, pengulangan, ruang tulisan
+        jelas dan maklum balas positif.
       </li>
     </ul>
-
-    <p>
-      <i>
-        Profil ini ialah profil rekaan berdasarkan
-        sumber ilmiah dan bukan rekod murid sebenar.
-      </i>
-    </p>
   `,
 
   objective: `
@@ -1608,83 +1843,66 @@ const INFO = {
 
     <ol>
       <li>
-        Murid menjejak sekurang-kurangnya 4 daripada
-        5 perkataan atau nombor menggunakan jari atau
-        stylus.
+        Murid menjejak sekurang-kurangnya
+        4 daripada 5 perkataan atau nombor.
       </li>
 
       <li>
-        Murid cuba menulis semula sekurang-kurangnya
+        Murid menulis semula sekurang-kurangnya
         4 daripada 5 item tanpa garis panduan.
       </li>
 
       <li>
-        Murid memadankan simbol nombor 1 hingga 5
+        Murid memadankan nombor 1 hingga 5
         dengan kuantiti visual.
       </li>
 
       <li>
-        Murid melibatkan diri sehingga tamat melalui
-        arahan ringkas dan pengukuhan positif.
+        Murid melibatkan diri sehingga tamat.
       </li>
     </ol>
-
-    <p>
-      <b>Fokus kurikulum:</b> Kemahiran asas membaca,
-      menulis dan nombor dalam konteks Asas 3M Tahun 1
-      Pendidikan Khas Masalah Pembelajaran.
-    </p>
   `,
 
   theory: `
-    <h3>Integrasi Tiga Teori Perkembangan</h3>
+    <h3>Integrasi Teori</h3>
 
     <ul>
       <li>
         <b>Kognitif:</b> Gambar, audio, perkataan
-        dan kuantiti membantu murid menghubungkan
-        maklumat visual, bunyi serta simbol.
+        dan kuantiti menghubungkan maklumat visual,
+        bunyi dan simbol.
       </li>
 
       <li>
         <b>Tingkah laku:</b> Prompt visual diberikan
-        dalam kotak Jejak dan dikurangkan dalam kotak
-        Tulis Sendiri. Maklum balas dan bintang
-        mengukuhkan usaha murid.
+        dalam aktiviti jejak dan dikurangkan dalam
+        aktiviti menulis sendiri.
       </li>
 
       <li>
-        <b>Sosioemosi:</b> Murid diberi pilihan bahasa
-        dan warna. Kesalahan tidak dihukum dan pujian
-        menekankan usaha murid.
+        <b>Sosioemosi:</b> Murid diberi pilihan
+        bahasa dan warna. Maklum balas positif
+        membantu membina keyakinan.
       </li>
     </ul>
-
-    <p>
-      <b>Penaakulan:</b> Urutan Jejak kemudian Tulis
-      Sendiri mengurangkan bantuan secara sistematik
-      sambil membina keyakinan murid.
-    </p>
   `,
 
   guideInfo: `
     <h3>Panduan Penggunaan</h3>
 
     <ol>
-      <li>Pilih Bahasa Melayu atau English.</li>
+      <li>Pilih bahasa.</li>
       <li>Pilih aktiviti Bahasa atau Matematik.</li>
       <li>Tekan audio untuk mendengar perkataan.</li>
-      <li>Pilih warna tulisan.</li>
-      <li>Jejak tulisan dalam kotak kiri.</li>
+      <li>Pilih warna.</li>
+      <li>Jejak dalam kotak kiri.</li>
       <li>Tulis sendiri dalam kotak kanan.</li>
-      <li>Tekan SIAP selepas kedua-dua kotak dicuba.</li>
+      <li>Tekan SEMAK.</li>
+      <li>
+        Jika betul, tekan SETERUSNYA.
+        Jika belum betul, cuba semula.
+      </li>
     </ol>
-
-    <p>
-      <b>Nota:</b> Sistem mengesan penyertaan murid,
-      bukan ketepatan tulisan. Guru perlu memerhatikan
-      pembentukan huruf atau nombor murid.
-    </p>
   `,
 
   refs: `
@@ -1696,37 +1914,25 @@ const INFO = {
         Universal Design for Learning guidelines
         version 3.0.
       </i>
-      CAST.
     </p>
 
     <p>
       International Dyslexia Association. (n.d.).
       <i>Understanding dysgraphia.</i>
-      https://dyslexiaida.org/understanding-dysgraphia/
     </p>
 
     <p>
       Kementerian Pendidikan Malaysia. (2016).
       <i>
-        Dokumen Standard Kurikulum dan Pentaksiran
-        KSSR Pendidikan Khas (Masalah Pembelajaran):
+        DSKP KSSR Pendidikan Khas
+        (Masalah Pembelajaran):
         Asas 3M Tahun 1.
       </i>
     </p>
 
     <p>
-      Kementerian Pendidikan Malaysia. (2023).
-      <i>
-        Buku Panduan Rancangan Pendidikan Individu
-        Edisi Kedua untuk Murid Berkeperluan
-        Pendidikan Khas KPM.
-      </i>
-    </p>
-
-    <p>
-      <b>Kredit:</b> Ikon emoji ialah simbol Unicode.
-      Audio menggunakan Web Speech API. Reka bentuk
-      dan kod permainan adalah asli.
+      Audio menggunakan Web Speech API.
+      Reka bentuk dan kod permainan adalah asli.
     </p>
   `
 };
@@ -1745,7 +1951,7 @@ function displayInformation(section) {
   });
 
   $("#infoContent").innerHTML =
-    INFO[section];
+    INFORMATION[section];
 }
 
 $("#infoBtn").addEventListener(
