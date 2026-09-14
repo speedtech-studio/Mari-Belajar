@@ -2,8 +2,11 @@
 <html lang="ms">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <meta name="theme-color" content="#6d5bd0">
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+  >
+
   <title>Jejak & Belajar | Trace & Learn</title>
 
   <style>
@@ -340,6 +343,7 @@
 
     canvas {
       position:absolute;
+      z-index:2;
       inset:0;
       width:100%;
       height:100%;
@@ -348,22 +352,24 @@
 
     .guide {
       position:absolute;
+      z-index:1;
       inset:0;
       display:grid;
       place-items:center;
       font-size:clamp(58px,8vw,105px);
       font-weight:900;
       letter-spacing:5px;
-      color:transparent;
-      -webkit-text-stroke:3px #aaa2bd;
+      color:#ebe8f2;
+      -webkit-text-stroke:2px #aaa2bd;
       paint-order:stroke fill;
-      opacity:.9;
+      opacity:1;
       pointer-events:none;
     }
 
     .palette {
       display:flex;
       justify-content:center;
+      align-items:center;
       gap:10px;
       padding:11px;
       background:#faf9ff;
@@ -436,7 +442,9 @@
     }
 
     @keyframes bounce {
-      to {transform:translateY(-10px)}
+      to {
+        transform:translateY(-10px);
+      }
     }
 
     .modal {
@@ -518,16 +526,45 @@
     }
 
     @media(max-width:760px) {
-      .app {padding:10px}
-      .screen {min-height:calc(100vh - 20px)}
-      .hero {padding:23px 16px}
-      .boards {grid-template-columns:1fr}
-      .canvas-wrap {height:230px}
-      .steps {grid-template-columns:1fr}
-      .prompt {min-height:100px}
-      .game-card {padding:10px}
-      .subject {min-height:145px}
-      .modal-box {padding:16px}
+      .app {
+        padding:10px;
+      }
+
+      .screen {
+        min-height:calc(100vh - 20px);
+      }
+
+      .hero {
+        padding:23px 16px;
+      }
+
+      .boards {
+        grid-template-columns:1fr;
+      }
+
+      .canvas-wrap {
+        height:230px;
+      }
+
+      .steps {
+        grid-template-columns:1fr;
+      }
+
+      .prompt {
+        min-height:100px;
+      }
+
+      .game-card {
+        padding:10px;
+      }
+
+      .subject {
+        min-height:145px;
+      }
+
+      .modal-box {
+        padding:16px;
+      }
     }
   </style>
 </head>
@@ -654,13 +691,19 @@
 
         <div class="word-area">
           <div id="quantity" class="quantity hidden"></div>
+
           <h2 id="word" class="word">BUKU</h2>
+
           <p id="promptText" class="prompt-text">
-            Ini buku.
+            Tekan audio untuk dengar.
           </p>
         </div>
 
-        <button id="speakBtn" class="speak" aria-label="Dengar">
+        <button
+          id="speakBtn"
+          class="speak"
+          aria-label="Dengar perkataan"
+        >
           🔊
         </button>
       </div>
@@ -790,103 +833,83 @@
 const DATA = {
   ms: [
     {
-      word: "BUKU",
-      emoji: "📖",
-      sentence: "Ini buku."
+      word:"BUKU",
+      emoji:"📖"
     },
     {
-      word: "BOLA",
-      emoji: "⚽",
-      sentence: "Ini bola."
+      word:"BOLA",
+      emoji:"⚽"
     },
     {
-      word: "BAJU",
-      emoji: "👕",
-      sentence: "Ini baju."
+      word:"BAJU",
+      emoji:"👕"
     },
     {
-      word: "MEJA",
-      emoji: "🪑",
-      sentence: "Ini meja."
+      word:"MEJA",
+      emoji:"🪑"
     },
     {
-      word: "SUSU",
-      emoji: "🥛",
-      sentence: "Ini susu."
+      word:"SUSU",
+      emoji:"🥛"
     }
   ],
 
   en: [
     {
-      word: "BOOK",
-      emoji: "📖",
-      sentence: "This is a book."
+      word:"BOOK",
+      emoji:"📖"
     },
     {
-      word: "BALL",
-      emoji: "⚽",
-      sentence: "This is a ball."
+      word:"BALL",
+      emoji:"⚽"
     },
     {
-      word: "CAT",
-      emoji: "🐱",
-      sentence: "This is a cat."
+      word:"CAT",
+      emoji:"🐱"
     },
     {
-      word: "FISH",
-      emoji: "🐟",
-      sentence: "This is a fish."
+      word:"FISH",
+      emoji:"🐟"
     },
     {
-      word: "MILK",
-      emoji: "🥛",
-      sentence: "This is milk."
+      word:"MILK",
+      emoji:"🥛"
     }
   ],
 
   math: [
     {
-      word: "1",
-      items: "🍎",
-      ms: "Ada berapa biji epal? Jawapannya satu.",
-      en: "How many apples? The answer is one."
+      word:"1",
+      items:"🍎"
     },
     {
-      word: "2",
-      items: "⭐⭐",
-      ms: "Ada berapa bintang? Jawapannya dua.",
-      en: "How many stars? The answer is two."
+      word:"2",
+      items:"⭐⭐"
     },
     {
-      word: "3",
-      items: "🐟🐟🐟",
-      ms: "Ada berapa ekor ikan? Jawapannya tiga.",
-      en: "How many fish? The answer is three."
+      word:"3",
+      items:"🐟🐟🐟"
     },
     {
-      word: "4",
-      items: "🌸🌸🌸🌸",
-      ms: "Ada berapa kuntum bunga? Jawapannya empat.",
-      en: "How many flowers? The answer is four."
+      word:"4",
+      items:"🌸🌸🌸🌸"
     },
     {
-      word: "5",
-      items: "⚽⚽⚽⚽⚽",
-      ms: "Ada berapa biji bola? Jawapannya lima.",
-      en: "How many balls? The answer is five."
+      word:"5",
+      items:"⚽⚽⚽⚽⚽"
     }
   ]
 };
 
-const T = {
+const TEXT = {
   ms: {
     choose:"Pilih Aktiviti",
     language:"Bahasa Melayu",
     math:"Matematik",
     how:"Cara Bermain",
-    s1:"Lihat gambar dan dengar.",
-    s2:"Jejak di kotak kiri.",
-    s3:"Tulis sendiri di kotak kanan.",
+    step1:"Lihat gambar dan dengar perkataan.",
+    step2:"Pilih warna dan jejak tulisan.",
+    step3:"Tulis sendiri dalam kotak kanan.",
     start:"MULA",
     progress:"Aktiviti",
     trace:"1. JEJAK",
@@ -894,13 +917,15 @@ const T = {
     undo:"Undo",
     clear:"Padam",
     done:"SIAP",
-    need:"Cuba menulis dalam kedua-dua kotak dahulu.",
-    good:"Bagus! Kamu telah mencuba sendiri! ⭐ Tekan SETERUSNYA.",
     next:"SETERUSNYA",
+    audio:"Tekan audio untuk dengar perkataan.",
+    mathAudio:"Tekan audio untuk dengar nombor.",
+    mathQuestion:"Kira objek, jejak nombor dan tulis sendiri.",
+    need:"Cuba menulis dalam kedua-dua kotak dahulu.",
+    good:"Bagus! Kamu telah mencuba sendiri! ⭐",
     finish:"Tahniah!",
     finishText:"Kamu telah mencuba semua aktiviti. Hebat!",
-    again:"MAIN LAGI",
-    mathQ:"Jejak dan tulis nombor jawapan."
+    again:"MAIN LAGI"
   },
 
   en: {
@@ -908,9 +933,9 @@ const T = {
     language:"English",
     math:"Mathematics",
     how:"How to Play",
-    s1:"Look at the picture and listen.",
-    s2:"Trace in the left box.",
-    s3:"Write by yourself in the right box.",
+    step1:"Look at the picture and listen to the word.",
+    step2:"Choose a colour and trace the word.",
+    step3:"Write by yourself in the right box.",
     start:"START",
     progress:"Activity",
     trace:"1. TRACE",
@@ -918,26 +943,30 @@ const T = {
     undo:"Undo",
     clear:"Clear",
     done:"DONE",
-    need:"Try writing in both boxes first.",
-    good:"Great! You tried it by yourself! ⭐ Press NEXT.",
     next:"NEXT",
+    audio:"Press the audio button to hear the word.",
+    mathAudio:"Press the audio button to hear the number.",
+    mathQuestion:"Count the objects, trace and write the number.",
+    need:"Try writing in both boxes first.",
+    good:"Great! You tried it by yourself! ⭐",
     finish:"Well done!",
     finishText:"You completed all the activities. Amazing!",
-    again:"PLAY AGAIN",
-    mathQ:"Trace and write the answer."
+    again:"PLAY AGAIN"
   }
 };
 
 let lang = "ms";
 let subject = "language";
-let index = 0;
+let activityIndex = 0;
 let score = 0;
-let readyNext = false;
+let readyForNext = false;
 
 const $ = selector => document.querySelector(selector);
-const $$ = selector => [...document.querySelectorAll(selector)];
 
-function show(id) {
+const $$ = selector =>
+  [...document.querySelectorAll(selector)];
+
+function showScreen(id) {
   $$(".screen").forEach(screen => {
     screen.classList.add("hidden");
   });
@@ -949,7 +978,7 @@ function show(id) {
 /* PILIH BAHASA */
 
 $$(".choice").forEach(button => {
-  button.onclick = () => {
+  button.addEventListener("click", () => {
     $$(".choice").forEach(item => {
       item.classList.remove("selected");
     });
@@ -957,24 +986,24 @@ $$(".choice").forEach(button => {
     button.classList.add("selected");
     lang = button.dataset.lang;
     $("#startBtn").disabled = false;
-  };
+  });
 });
 
-$("#startBtn").onclick = () => {
+$("#startBtn").addEventListener("click", () => {
   applyLanguage();
-  show("subjects");
-};
+  showScreen("subjects");
+});
 
 function applyLanguage() {
-  const t = T[lang];
+  const t = TEXT[lang];
 
   $("#chooseTitle").textContent = t.choose;
   $("#languageLabel").textContent = t.language;
   $("#mathLabel").textContent = t.math;
   $("#instructionTitle").textContent = t.how;
-  $("#step1").textContent = t.s1;
-  $("#step2").textContent = t.s2;
-  $("#step3").textContent = t.s3;
+  $("#step1").textContent = t.step1;
+  $("#step2").textContent = t.step2;
+  $("#step3").textContent = t.step3;
   $("#playBtn").textContent = t.start;
   $("#traceTitle").textContent = t.trace;
   $("#writeTitle").textContent = t.write;
@@ -993,39 +1022,47 @@ function applyLanguage() {
 /* PILIH SUBJEK */
 
 $$(".subject").forEach(button => {
-  button.onclick = () => {
+  button.addEventListener("click", () => {
     subject = button.dataset.subject;
-    show("instructions");
-  };
+    showScreen("instructions");
+  });
 });
 
-$("#backSubject").onclick = () => show("subjects");
+$("#backSubject").addEventListener("click", () => {
+  showScreen("subjects");
+});
 
 $$(".homeBtn").forEach(button => {
-  button.onclick = () => show("home");
+  button.addEventListener("click", () => {
+    showScreen("home");
+  });
 });
 
-$("#quitBtn").onclick = () => show("home");
+$("#quitBtn").addEventListener("click", () => {
+  showScreen("home");
+});
 
-/* MULA GAME */
+/* MULA PERMAINAN */
 
-$("#playBtn").onclick = () => {
-  index = 0;
+$("#playBtn").addEventListener("click", () => {
+  activityIndex = 0;
   score = 0;
-  loadRound();
-  show("game");
-};
 
-$("#againBtn").onclick = () => {
-  index = 0;
+  loadActivity();
+  showScreen("game");
+});
+
+$("#againBtn").addEventListener("click", () => {
+  activityIndex = 0;
   score = 0;
-  loadRound();
-  show("game");
-};
 
-/* WARNA PEN */
+  loadActivity();
+  showScreen("game");
+});
 
-const palettes = [
+/* WARNA */
+
+const colours = [
   "#29304a",
   "#6d5bd0",
   "#188de0",
@@ -1033,143 +1070,202 @@ const palettes = [
   "#19a878"
 ];
 
-function makePalette(element, canvasObject) {
-  palettes.forEach((colour, i) => {
+function createPalette(container, drawingBoard) {
+  colours.forEach((colour, index) => {
     const button = document.createElement("button");
 
-    button.className = "colour" + (i === 0 ? " active" : "");
-    button.style.background = colour;
-    button.setAttribute("aria-label", "Warna " + colour);
+    button.className =
+      "colour" + (index === 0 ? " active" : "");
 
-    button.onclick = () => {
-      element.querySelectorAll(".colour").forEach(item => {
+    button.style.background = colour;
+
+    button.setAttribute(
+      "aria-label",
+      "Pilih warna " + colour
+    );
+
+    button.addEventListener("click", () => {
+      container.querySelectorAll(".colour").forEach(item => {
         item.classList.remove("active");
       });
 
       button.classList.add("active");
-      canvasObject.color = colour;
-    };
+      drawingBoard.colour = colour;
+    });
 
-    element.appendChild(button);
+    container.appendChild(button);
   });
 }
 
-/* DRAWING CANVAS */
+/* KOTAK MENULIS */
 
-function drawingCanvas(canvas) {
-  let ctx;
+function createDrawingBoard(canvas) {
+  let context;
   let drawing = false;
-  let last = null;
+  let lastPosition = null;
   let history = [];
-  let hasInk = false;
-  let colour = palettes[0];
+  let containsWriting = false;
+  let selectedColour = colours[0];
 
-  function resize() {
-    const rect = canvas.getBoundingClientRect();
+  function resizeCanvas() {
+    const rectangle = canvas.getBoundingClientRect();
     const ratio = window.devicePixelRatio || 1;
-    const snapshot = canvas.width ? canvas.toDataURL() : null;
 
-    canvas.width = rect.width * ratio;
-    canvas.height = rect.height * ratio;
+    const oldImage =
+      canvas.width > 0 ? canvas.toDataURL() : null;
 
-    ctx = canvas.getContext("2d");
-    ctx.scale(ratio, ratio);
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.lineWidth = 9;
+    canvas.width = rectangle.width * ratio;
+    canvas.height = rectangle.height * ratio;
 
-    if (snapshot) {
+    context = canvas.getContext("2d");
+    context.scale(ratio, ratio);
+    context.lineCap = "round";
+    context.lineJoin = "round";
+    context.lineWidth = 9;
+
+    if (oldImage) {
       const image = new Image();
 
       image.onload = () => {
-        ctx.drawImage(image, 0, 0, rect.width, rect.height);
+        context.drawImage(
+          image,
+          0,
+          0,
+          rectangle.width,
+          rectangle.height
+        );
       };
 
-      image.src = snapshot;
+      image.src = oldImage;
     }
   }
 
-  function position(event) {
-    const rect = canvas.getBoundingClientRect();
+  function getPosition(event) {
+    const rectangle = canvas.getBoundingClientRect();
 
     return {
-      x:event.clientX - rect.left,
-      y:event.clientY - rect.top
+      x:event.clientX - rectangle.left,
+      y:event.clientY - rectangle.top
     };
   }
 
-  function start(event) {
+  function startDrawing(event) {
     event.preventDefault();
 
     history.push(canvas.toDataURL());
+
     drawing = true;
-    last = position(event);
+    lastPosition = getPosition(event);
+    containsWriting = true;
 
-    ctx.beginPath();
-    ctx.arc(last.x, last.y, 4.5, 0, Math.PI * 2);
-    ctx.fillStyle = colour;
-    ctx.fill();
+    context.beginPath();
 
-    hasInk = true;
+    context.arc(
+      lastPosition.x,
+      lastPosition.y,
+      4.5,
+      0,
+      Math.PI * 2
+    );
+
+    context.fillStyle = selectedColour;
+    context.fill();
   }
 
-  function move(event) {
+  function continueDrawing(event) {
     if (!drawing) return;
 
     event.preventDefault();
 
-    const current = position(event);
+    const currentPosition = getPosition(event);
 
-    ctx.beginPath();
-    ctx.moveTo(last.x, last.y);
-    ctx.lineTo(current.x, current.y);
-    ctx.strokeStyle = colour;
-    ctx.lineWidth = 9;
-    ctx.stroke();
+    context.beginPath();
 
-    last = current;
+    context.moveTo(
+      lastPosition.x,
+      lastPosition.y
+    );
+
+    context.lineTo(
+      currentPosition.x,
+      currentPosition.y
+    );
+
+    context.strokeStyle = selectedColour;
+    context.lineWidth = 9;
+    context.stroke();
+
+    lastPosition = currentPosition;
   }
 
-  function end() {
+  function stopDrawing() {
     drawing = false;
   }
 
-  canvas.addEventListener("pointerdown", start);
-  canvas.addEventListener("pointermove", move);
-  window.addEventListener("pointerup", end);
-  window.addEventListener("pointercancel", end);
+  canvas.addEventListener(
+    "pointerdown",
+    startDrawing
+  );
 
-  resize();
+  canvas.addEventListener(
+    "pointermove",
+    continueDrawing
+  );
+
+  window.addEventListener(
+    "pointerup",
+    stopDrawing
+  );
+
+  window.addEventListener(
+    "pointercancel",
+    stopDrawing
+  );
+
+  resizeCanvas();
 
   return {
-    get color() {
-      return colour;
+    get colour() {
+      return selectedColour;
     },
 
-    set color(value) {
-      colour = value;
+    set colour(newColour) {
+      selectedColour = newColour;
     },
 
-    get hasInk() {
-      return hasInk;
+    get hasWriting() {
+      return containsWriting;
     },
 
     clear() {
       history.push(canvas.toDataURL());
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      hasInk = false;
+
+      context.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+
+      containsWriting = false;
     },
 
     undo() {
-      if (!history.length) return;
+      if (history.length === 0) return;
 
-      const source = history.pop();
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const previousImage = history.pop();
+
+      context.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
 
       const image = new Image();
 
       image.onload = () => {
-        ctx.drawImage(
+        context.drawImage(
           image,
           0,
           0,
@@ -1178,178 +1274,265 @@ function drawingCanvas(canvas) {
         );
       };
 
-      image.src = source;
-      hasInk = true;
+      image.src = previousImage;
+      containsWriting = true;
     },
 
     reset() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      context.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+
       history = [];
-      hasInk = false;
+      containsWriting = false;
     },
 
-    resize
+    resize:resizeCanvas
   };
 }
 
-const traceCanvas = drawingCanvas($("#traceCanvas"));
-const writeCanvas = drawingCanvas($("#writeCanvas"));
+const traceBoard =
+  createDrawingBoard($("#traceCanvas"));
 
-makePalette(
+const writeBoard =
+  createDrawingBoard($("#writeCanvas"));
+
+createPalette(
   $('.palette[data-for="trace"]'),
-  traceCanvas
+  traceBoard
 );
 
-makePalette(
+createPalette(
   $('.palette[data-for="write"]'),
-  writeCanvas
+  writeBoard
 );
 
 window.addEventListener("resize", () => {
-  traceCanvas.resize();
-  writeCanvas.resize();
+  traceBoard.resize();
+  writeBoard.resize();
 });
 
-$("#undoTrace").onclick = () => traceCanvas.undo();
-$("#undoWrite").onclick = () => writeCanvas.undo();
-$("#clearTrace").onclick = () => traceCanvas.clear();
-$("#clearWrite").onclick = () => writeCanvas.clear();
+$("#undoTrace").addEventListener("click", () => {
+  traceBoard.undo();
+});
 
-/* KANDUNGAN SEMASA */
+$("#undoWrite").addEventListener("click", () => {
+  writeBoard.undo();
+});
 
-function currentActivity() {
+$("#clearTrace").addEventListener("click", () => {
+  traceBoard.clear();
+});
+
+$("#clearWrite").addEventListener("click", () => {
+  writeBoard.clear();
+});
+
+/* AKTIVITI SEMASA */
+
+function getCurrentActivity() {
   if (subject === "math") {
-    return DATA.math[index];
+    return DATA.math[activityIndex];
   }
 
-  return DATA[lang][index];
+  return DATA[lang][activityIndex];
 }
 
-function loadRound() {
-  readyNext = false;
+function loadActivity() {
+  readyForNext = false;
 
-  traceCanvas.reset();
-  writeCanvas.reset();
+  traceBoard.reset();
+  writeBoard.reset();
 
-  const data = currentActivity();
-  const t = T[lang];
-  const total = 5;
+  const data = getCurrentActivity();
+  const t = TEXT[lang];
+  const totalActivities = 5;
 
   $("#progressText").textContent =
-    `${t.progress} ${index + 1} / ${total}`;
+    `${t.progress} ${activityIndex + 1} / ${totalActivities}`;
 
-  $("#scoreText").textContent = "⭐ " + score;
+  $("#scoreText").textContent =
+    "⭐ " + score;
 
   $("#progressBar").style.width =
-    (index / total * 100) + "%";
+    (activityIndex / totalActivities * 100) + "%";
 
   $("#word").textContent = data.word;
+
+  // Tulisan panduan kekal kelihatan di kotak kiri
   $("#guide").textContent = data.word;
+
   $("#feedback").textContent = "";
   $("#feedback").className = "feedback";
   $("#doneLabel").textContent = t.done;
 
-  const isMath = subject === "math";
+  const isMathematics =
+    subject === "math";
 
-  $("#quantity").classList.toggle("hidden", !isMath);
-  $("#mathQuestion").classList.toggle("hidden", !isMath);
+  $("#quantity").classList.toggle(
+    "hidden",
+    !isMathematics
+  );
 
-  if (isMath) {
+  $("#mathQuestion").classList.toggle(
+    "hidden",
+    !isMathematics
+  );
+
+  if (isMathematics) {
     $("#quantity").textContent = data.items;
     $("#picture").classList.add("hidden");
-
-    $("#promptText").textContent =
-      lang === "ms" ? "Kira objek." : "Count the objects.";
-
-    $("#mathQuestion").textContent = t.mathQ;
+    $("#promptText").textContent = t.mathAudio;
+    $("#mathQuestion").textContent = t.mathQuestion;
   } else {
     $("#picture").classList.remove("hidden");
     $("#picture").textContent = data.emoji;
     $("#quantity").textContent = "";
-    $("#promptText").textContent = data.sentence;
+    $("#promptText").textContent = t.audio;
   }
 }
 
 /* BUTTON SIAP */
 
-$("#doneBtn").onclick = () => {
-  const t = T[lang];
+$("#doneBtn").addEventListener("click", () => {
+  const t = TEXT[lang];
 
-  if (readyNext) {
-    index++;
+  if (readyForNext) {
+    activityIndex++;
 
-    if (index >= 5) {
+    if (activityIndex >= 5) {
       $("#progressBar").style.width = "100%";
+
       celebrate();
-      show("finish");
+      showScreen("finish");
     } else {
-      loadRound();
+      loadActivity();
     }
 
     return;
   }
 
-  if (!traceCanvas.hasInk || !writeCanvas.hasInk) {
+  if (
+    !traceBoard.hasWriting ||
+    !writeBoard.hasWriting
+  ) {
     $("#feedback").textContent = t.need;
     $("#feedback").className = "feedback warn";
+
     speak(t.need);
     return;
   }
 
   score++;
-  readyNext = true;
+  readyForNext = true;
 
-  $("#scoreText").textContent = "⭐ " + score;
+  $("#scoreText").textContent =
+    "⭐ " + score;
+
   $("#feedback").textContent = t.good;
   $("#feedback").className = "feedback good";
   $("#doneLabel").textContent = t.next;
 
-  speak(lang === "ms" ? "Bagus!" : "Great!");
-};
+  speak(lang === "ms" ? "Bagus" : "Great");
+});
 
-/* AUDIO */
+/* SUARA PEREMPUAN */
+
+let availableVoices = [];
+
+function loadVoices() {
+  if (!("speechSynthesis" in window)) return;
+
+  availableVoices =
+    window.speechSynthesis.getVoices();
+}
+
+if ("speechSynthesis" in window) {
+  loadVoices();
+
+  window.speechSynthesis.onvoiceschanged = () => {
+    loadVoices();
+  };
+}
+
+function selectFemaleVoice(languageCode) {
+  const language =
+    languageCode.toLowerCase().split("-")[0];
+
+  const languageVoices =
+    availableVoices.filter(voice =>
+      voice.lang
+        .toLowerCase()
+        .startsWith(language)
+    );
+
+  const femaleVoiceNames =
+    /female|samantha|zira|susan|karen|moira|tessa|victoria|ava|serena|siri|hazel|aria|jenny|natasha|nurul|yasmin/i;
+
+  const femaleVoice =
+    languageVoices.find(voice =>
+      femaleVoiceNames.test(voice.name)
+    );
+
+  return femaleVoice ||
+    languageVoices[0] ||
+    null;
+}
 
 function speak(text) {
   if (!("speechSynthesis" in window)) return;
 
   window.speechSynthesis.cancel();
 
-  const speech = new SpeechSynthesisUtterance(text);
+  const speech =
+    new SpeechSynthesisUtterance(text);
 
-  speech.lang = lang === "ms" ? "ms-MY" : "en-GB";
-  speech.rate = 0.78;
-  speech.pitch = 1.08;
+  speech.lang =
+    lang === "ms" ? "ms-MY" : "en-GB";
+
+  speech.rate = 0.72;
+  speech.pitch = 1.12;
+  speech.volume = 1;
+
+  const selectedVoice =
+    selectFemaleVoice(speech.lang);
+
+  if (selectedVoice) {
+    speech.voice = selectedVoice;
+  }
 
   window.speechSynthesis.speak(speech);
 }
 
-$("#speakBtn").onclick = () => {
-  const data = currentActivity();
+/* AUDIO SEBUT PERKATAAN SAHAJA */
 
-  if (subject === "math") {
-    speak(data[lang]);
-  } else if (lang === "ms") {
-    speak(
-      `${data.sentence} Sebut ${data.word.toLowerCase()}.`
-    );
-  } else {
-    speak(
-      `${data.sentence} Say ${data.word.toLowerCase()}.`
-    );
-  }
-};
+$("#speakBtn").addEventListener("click", () => {
+  const data = getCurrentActivity();
+
+  // Contoh: hanya sebut BOOK, BUKU atau 1
+  speak(data.word);
+});
 
 /* CONFETTI */
 
 function celebrate() {
   for (let i = 0; i < 35; i++) {
-    const confetti = document.createElement("span");
+    const confetti =
+      document.createElement("span");
 
     confetti.className = "confetti";
-    confetti.textContent = ["⭐","🎉","●","◆"][i % 4];
-    confetti.style.left = Math.random() * 100 + "vw";
+
+    confetti.textContent =
+      ["⭐","🎉","●","◆"][i % 4];
+
+    confetti.style.left =
+      Math.random() * 100 + "vw";
+
     confetti.style.color =
-      palettes[i % palettes.length];
+      colours[i % colours.length];
 
     confetti.style.animationDelay =
       Math.random() * 1.2 + "s";
@@ -1361,7 +1544,11 @@ function celebrate() {
     }, 4000);
   }
 
-  speak(T[lang].finishText);
+  speak(
+    lang === "ms" ?
+      "Tahniah" :
+      "Well done"
+  );
 }
 
 /* INFO GURU */
@@ -1378,8 +1565,9 @@ const INFO = {
 
     <ul>
       <li>
-        <b>Kekuatan:</b> Mengenal huruf, gambar objek harian
-        dan nombor asas serta boleh mengikuti arahan satu langkah.
+        <b>Kekuatan:</b> Mengenal huruf, gambar objek
+        harian dan nombor asas serta boleh mengikuti
+        arahan satu langkah.
       </li>
 
       <li>
@@ -1388,27 +1576,29 @@ const INFO = {
       </li>
 
       <li>
-        <b>Kesukaran:</b> Pembentukan, saiz dan jarak huruf
-        kurang konsisten. Tulisan juga perlahan dan memerlukan
-        model visual.
+        <b>Kesukaran:</b> Pembentukan, saiz dan jarak
+        huruf kurang konsisten. Tulisan juga perlahan
+        dan memerlukan model visual.
       </li>
 
       <li>
-        <b>Halangan penyertaan:</b> Latihan tulisan yang panjang
-        boleh meningkatkan beban dan mengurangkan penglibatan.
+        <b>Halangan penyertaan:</b> Latihan tulisan
+        yang panjang boleh meningkatkan beban dan
+        mengurangkan penglibatan.
       </li>
 
       <li>
-        <b>Keperluan sokongan:</b> Arahan ringkas, latihan
-        berperingkat, pengulangan, ruang tulisan yang jelas,
-        pengurangan bantuan dan maklum balas positif.
+        <b>Keperluan sokongan:</b> Arahan ringkas,
+        latihan berperingkat, pengulangan, ruang
+        tulisan yang jelas, pengurangan bantuan dan
+        maklum balas positif.
       </li>
     </ul>
 
     <p>
       <i>
-        Profil ini ialah profil rekaan yang dibina berdasarkan
-        sumber ilmiah dan bukan rekod seorang murid sebenar.
+        Profil ini ialah profil rekaan berdasarkan
+        sumber ilmiah dan bukan rekod murid sebenar.
       </i>
     </p>
   `,
@@ -1418,22 +1608,23 @@ const INFO = {
 
     <ol>
       <li>
-        Murid menjejak sekurang-kurangnya 4 daripada 5
-        perkataan atau nombor menggunakan jari atau stylus.
+        Murid menjejak sekurang-kurangnya 4 daripada
+        5 perkataan atau nombor menggunakan jari atau
+        stylus.
       </li>
 
       <li>
-        Murid cuba menulis semula sekurang-kurangnya 4
-        daripada 5 item tanpa garis panduan.
+        Murid cuba menulis semula sekurang-kurangnya
+        4 daripada 5 item tanpa garis panduan.
       </li>
 
       <li>
-        Murid memadankan simbol nombor 1 hingga 5 dengan
-        kuantiti visual.
+        Murid memadankan simbol nombor 1 hingga 5
+        dengan kuantiti visual.
       </li>
 
       <li>
-        Murid melibatkan diri sehingga aktiviti tamat melalui
+        Murid melibatkan diri sehingga tamat melalui
         arahan ringkas dan pengukuhan positif.
       </li>
     </ol>
@@ -1450,30 +1641,29 @@ const INFO = {
 
     <ul>
       <li>
-        <b>Teori Kognitif:</b> Gambar, audio, perkataan dan
-        kuantiti membantu murid menghubungkan maklumat visual,
-        bunyi serta simbol. Aktiviti dipecahkan kepada langkah
-        yang kecil dan tersusun.
+        <b>Kognitif:</b> Gambar, audio, perkataan
+        dan kuantiti membantu murid menghubungkan
+        maklumat visual, bunyi serta simbol.
       </li>
 
       <li>
-        <b>Teori Tingkah Laku:</b> Prompt visual diberikan
-        dalam kotak Jejak. Prompt tersebut dikurangkan dalam
-        kotak Tulis Sendiri. Maklum balas segera dan bintang
+        <b>Tingkah laku:</b> Prompt visual diberikan
+        dalam kotak Jejak dan dikurangkan dalam kotak
+        Tulis Sendiri. Maklum balas dan bintang
         mengukuhkan usaha murid.
       </li>
 
       <li>
-        <b>Teori Sosioemosi:</b> Murid diberi pilihan bahasa
+        <b>Sosioemosi:</b> Murid diberi pilihan bahasa
         dan warna. Kesalahan tidak dihukum dan pujian
-        menekankan usaha untuk membina keyakinan murid.
+        menekankan usaha murid.
       </li>
     </ul>
 
     <p>
-      <b>Penaakulan reka bentuk:</b> Urutan Jejak kemudian
-      Tulis Sendiri mengurangkan bantuan secara sistematik
-      sambil mengekalkan pengalaman pembelajaran yang positif.
+      <b>Penaakulan:</b> Urutan Jejak kemudian Tulis
+      Sendiri mengurangkan bantuan secara sistematik
+      sambil membina keyakinan murid.
     </p>
   `,
 
@@ -1483,30 +1673,17 @@ const INFO = {
     <ol>
       <li>Pilih Bahasa Melayu atau English.</li>
       <li>Pilih aktiviti Bahasa atau Matematik.</li>
-      <li>
-        Tekan butang audio dan minta murid melihat atau
-        menyebut item.
-      </li>
-      <li>
-        Murid menjejak perkataan atau nombor dalam kotak kiri.
-      </li>
-      <li>
-        Murid menulis semula dalam kotak kanan tanpa
-        garis panduan.
-      </li>
-      <li>
-        Guru memberikan bantuan minimum dan mengurangkannya
-        secara beransur-ansur.
-      </li>
-      <li>
-        Tekan SIAP selepas kedua-dua ruang telah dicuba.
-      </li>
+      <li>Tekan audio untuk mendengar perkataan.</li>
+      <li>Pilih warna tulisan.</li>
+      <li>Jejak tulisan dalam kotak kiri.</li>
+      <li>Tulis sendiri dalam kotak kanan.</li>
+      <li>Tekan SIAP selepas kedua-dua kotak dicuba.</li>
     </ol>
 
     <p>
-      <b>Nota:</b> Sistem mengesan penyertaan murid, bukan
-      ketepatan bentuk tulisan. Guru perlu membuat pemerhatian
-      autentik terhadap pembentukan huruf atau nombor.
+      <b>Nota:</b> Sistem mengesan penyertaan murid,
+      bukan ketepatan tulisan. Guru perlu memerhatikan
+      pembentukan huruf atau nombor murid.
     </p>
   `,
 
@@ -1515,7 +1692,10 @@ const INFO = {
 
     <p>
       CAST. (2024).
-      <i>Universal Design for Learning guidelines version 3.0.</i>
+      <i>
+        Universal Design for Learning guidelines
+        version 3.0.
+      </i>
       CAST.
     </p>
 
@@ -1528,8 +1708,8 @@ const INFO = {
     <p>
       Kementerian Pendidikan Malaysia. (2016).
       <i>
-        Dokumen Standard Kurikulum dan Pentaksiran KSSR
-        Pendidikan Khas (Masalah Pembelajaran):
+        Dokumen Standard Kurikulum dan Pentaksiran
+        KSSR Pendidikan Khas (Masalah Pembelajaran):
         Asas 3M Tahun 1.
       </i>
     </p>
@@ -1537,25 +1717,26 @@ const INFO = {
     <p>
       Kementerian Pendidikan Malaysia. (2023).
       <i>
-        Buku Panduan Rancangan Pendidikan Individu Edisi
-        Kedua untuk Murid Berkeperluan Pendidikan Khas KPM.
+        Buku Panduan Rancangan Pendidikan Individu
+        Edisi Kedua untuk Murid Berkeperluan
+        Pendidikan Khas KPM.
       </i>
     </p>
 
     <p>
-      <b>Kredit media:</b> Ikon emoji ialah simbol Unicode
-      pada peranti pengguna. Audio dijana menggunakan
-      Web Speech API. Reka bentuk dan kod produk adalah asli.
+      <b>Kredit:</b> Ikon emoji ialah simbol Unicode.
+      Audio menggunakan Web Speech API. Reka bentuk
+      dan kod permainan adalah asli.
     </p>
   `
 };
 
-function openInfo() {
-  showInfo("profile");
+function openInformation() {
+  displayInformation("profile");
   $("#infoModal").classList.remove("hidden");
 }
 
-function showInfo(section) {
+function displayInformation(section) {
   $$(".tab").forEach(tab => {
     tab.classList.toggle(
       "active",
@@ -1563,27 +1744,35 @@ function showInfo(section) {
     );
   });
 
-  $("#infoContent").innerHTML = INFO[section];
+  $("#infoContent").innerHTML =
+    INFO[section];
 }
 
-$("#infoBtn").onclick = openInfo;
-$("#gameInfo").onclick = openInfo;
+$("#infoBtn").addEventListener(
+  "click",
+  openInformation
+);
 
-$("#closeInfo").onclick = () => {
+$("#gameInfo").addEventListener(
+  "click",
+  openInformation
+);
+
+$("#closeInfo").addEventListener("click", () => {
   $("#infoModal").classList.add("hidden");
-};
-
-$$(".tab").forEach(button => {
-  button.onclick = () => {
-    showInfo(button.dataset.tab);
-  };
 });
 
-$("#infoModal").onclick = event => {
+$$(".tab").forEach(button => {
+  button.addEventListener("click", () => {
+    displayInformation(button.dataset.tab);
+  });
+});
+
+$("#infoModal").addEventListener("click", event => {
   if (event.target.id === "infoModal") {
     $("#infoModal").classList.add("hidden");
   }
-};
+});
 </script>
 
 </body>
